@@ -1,2 +1,2 @@
 # experimental
-Repository used for personnale experiments
+Repository used for personnal experiments.
