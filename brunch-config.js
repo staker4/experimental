@@ -16,7 +16,7 @@ module.exports = {
         },
         stylesheets: {
             joinTo: {
-                'vendor.css': /^app\/vendor|node_modules/,
+                'vendor.css': /^vendor|node_modules/,
                 'app.css': /^app\/(?!vendor)/
             }
         }

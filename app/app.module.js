@@ -1,6 +1,6 @@
 import angular from 'angular';
-import jquery from 'jquery';
 
+import './logs/logs.module';
 import './logs/logs';
 
 angular.module('app', [
