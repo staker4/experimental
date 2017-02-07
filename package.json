@@ -24,6 +24,8 @@
     "clean-css-brunch": "^2.0.0",
     "css-brunch": "^2.0.0",
     "javascript-brunch": "^2.0.0",
+    "postcss-brunch": "^2.0.5",
+    "postcss-import": "^9.1.0",
     "uglify-js-brunch": "^2.0.0"
   }
 }

@@ -15,13 +15,21 @@ module.exports = {
             }
         },
         stylesheets: {
-            joinTo: 'app.css'
+            joinTo: {
+                'vendor.css': /^app\/vendor|node_modules/,
+                'app.css': /^app\/(?!vendor)/
+            }
         }
     },
 
     plugins: {
         babel: {
             presets: ['es2015']
+        },
+        postcss: {
+            processors: [
+                require('postcss-import')
+            ]
         }
     }
 };
