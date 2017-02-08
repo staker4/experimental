@@ -1,8 +1,8 @@
 import angular from 'angular';
 
-import './logs/logs.module';
-import './logs/logs';
+import './records/records.module';
+import './records/records';
 
 angular.module('app', [
-    'app.logs'
+    'app.records'
 ]);
