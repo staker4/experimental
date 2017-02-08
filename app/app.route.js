@@ -3,10 +3,10 @@ angular.module('app')
 
 function config($urlRouterProvider, $stateProvider) {
 
-    var aboutState = {
-        name: 'about',
-        url: '/about',
-        templateUrl: 'about.html'
+    var homeState = {
+        name: 'home',
+        url: '/home',
+        templateUrl: 'home.html'
     }
 
      var recordsState = {
@@ -16,8 +16,8 @@ function config($urlRouterProvider, $stateProvider) {
         templateUrl: 'records.html'
     }
 
-    $stateProvider.state(aboutState);
+    $stateProvider.state(homeState);
     $stateProvider.state(recordsState);
 
-    $urlRouterProvider.otherwise('/about');
+    $urlRouterProvider.otherwise('/home');
 };

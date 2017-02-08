@@ -2,7 +2,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-footer, header {
+header nav {
+    padding: 10px 20px;
+}
+
+footer {
     background-color: #666;
     text-align: center;
     font-size: large;
