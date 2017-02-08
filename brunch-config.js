@@ -4,7 +4,7 @@ module.exports = {
     },
     modules: {
         autoRequire: {
-            'app.js': ['app.module']
+            'app.js': ['initialize']
         }
     },
     files: {
