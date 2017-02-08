@@ -1,3 +1,23 @@
 <div class="container-fluid text-center">
     <h2>{{vm.title}}</h2>
 </div>
+<div class="container-fluid">
+    <table class="table table-hover">
+        <thead>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in vm.records">
+                <td>{{record.id}}</td>
+                <td>
+                    <div ng-repeat="person in record.persons">{{person.firstName}}</div>
+                </td>
+                <td>
+                    <div ng-repeat="person in record.persons">{{person.lastName}}</div>
+                </td>
+</div>
+</tbody>
+</table>
+</div>
