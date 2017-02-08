@@ -19,7 +19,7 @@ module.exports = {
                 'vendor.css': /^vendor|node_modules/,
                 'app.css': /^app\/(?!vendor)/
             }
-        }
+        },
     },
 
     plugins: {
@@ -30,6 +30,6 @@ module.exports = {
             processors: [
                 require('postcss-import')
             ]
-        }
+        },
     }
 };

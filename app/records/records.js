@@ -4,5 +4,5 @@ angular
 
 function Records() {
     var vm = this;
-    vm.title = "Records";
+    vm.title = "Records title";
 }

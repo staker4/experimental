@@ -1,3 +1,4 @@
 angular.module('app', [
-    'app.records'
+    'ui.router',
+    'app.records',
 ]);
