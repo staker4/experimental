@@ -7,6 +7,7 @@ function Records($http, $location) {
     var vm = this;
     vm.title = "Records";
     vm.records = [];
+    vm.recordsCount = 0;
     vm.filteredRecords = [];
     vm.search = search;
 
@@ -32,6 +33,7 @@ function Records($http, $location) {
 
     function applyFilter() {
         vm.filteredRecords = vm.records.filter(recordFilter);
+        vm.recordsCount = vm.filteredRecords.length;
     }
 
     function recordFilter(record) {
