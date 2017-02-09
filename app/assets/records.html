@@ -3,7 +3,7 @@
     <form>
         <div class="form-group">
             <div class="input-group col-md-12">
-                <input type="text" class="form-control" placeholder="Search records..." ng-model="vm.searchRecord">
+                <input type="text" class="form-control" placeholder="Search records..." ng-model="vm.recordSearch" ng-keyup="vm.search($event)">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
@@ -11,7 +11,6 @@
         </div>
     </form>
 </div>
-
 <div class="container-fluid">
     <table class="table table-hover table-bordered">
         <thead>
@@ -39,7 +38,7 @@
             <th>Sub Records</th>
         </thead>
         <tbody>
-            <tr ng-repeat="record in vm.records | orderBy : vm.sortType : vm.sortReverse | filter:vm.searchRecord">
+            <tr ng-repeat="record in vm.filteredRecords | orderBy : vm.sortType : vm.sortReverse">
                 <td>{{record.id}}</td>
                 <td>{{record.owner}}</td>
                 <td>{{record.status}}</td>
