@@ -1,16 +1,42 @@
 <div class="container-fluid text-center">
     <h2>{{vm.title}}</h2>
+    <div class="alert alert-info">
+        <p>Sort Type: {{ vm.sortType }}</p>
+        <p>Sort Reverse: {{ vm.sortReverse }}</p>
+        <p>Search Query: {{ vm.searchFish }}</p>
+    </div>
 </div>
 <div class="container-fluid">
     <table class="table table-hover table-bordered">
         <thead>
-            <th>Id</th>
-            <th>Owner</th>
-            <th>Status</th>
+            <th>
+                <a ui-sref="records" ng-click="vm.sortType = 'id'; vm.sortReverse = !vm.sortReverse">
+                    Id
+                    <span ng-show="vm.sortType == 'id' && !vm.sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="vm.sortType == 'id' && vm.sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+
+            <th>
+                <a ui-sref="records" ng-click="vm.sortType = 'owner'; vm.sortReverse = !vm.sortReverse">
+                    Owner
+                    <span ng-show="vm.sortType == 'owner' && !vm.sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="vm.sortType == 'owner' && vm.sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+
+            <th>
+                <a ui-sref="records" ng-click="vm.sortType = 'status'; vm.sortReverse = !vm.sortReverse">
+                    Status
+                    <span ng-show="vm.sortType == 'status' && !vm.sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="vm.sortType == 'status' && vm.sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+
             <th>Sub Records</th>
         </thead>
         <tbody>
-            <tr ng-repeat="record in vm.records | orderBy :'+owner'">
+            <tr ng-repeat="record in vm.records | orderBy : vm.sortType : vm.sortReverse">
                 <td>{{record.id}}</td>
                 <td>{{record.owner}}</td>
                 <td>{{record.status}}</td>

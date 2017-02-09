@@ -8,6 +8,10 @@ function Records($http, $location) {
     vm.title = "Records";
     vm.records = [];
 
+    vm.sortType = 'owner';
+    vm.sortReverse = false;
+    vm.searchRecord = '';
+
     activate();
 
     function activate() {

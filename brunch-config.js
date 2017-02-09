@@ -37,6 +37,12 @@ module.exports = {
                 require('postcss-import')
             ]
         },
+        copycat: {
+            fonts: [
+                "node_modules/font-awesome/fonts",
+                "node_modules/bootstrap/dist/fonts"
+            ]
+        }
     },
 
     server: {

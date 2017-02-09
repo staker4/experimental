@@ -5,7 +5,7 @@ function config($urlRouterProvider, $stateProvider) {
 
     var homeState = {
         name: 'home',
-        url: '/home',
+        url: '/',
         templateUrl: 'home.html'
     }
 
