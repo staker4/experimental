@@ -2,22 +2,25 @@
     <h2>{{vm.title}}</h2>
 </div>
 <div class="container-fluid">
-    <table class="table table-hover">
+    <table class="table table-hover table-bordered">
         <thead>
             <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Owner</th>
+            <th>Status</th>
+            <th>Sub Records</th>
         </thead>
         <tbody>
-            <tr ng-repeat="record in vm.records">
+            <tr ng-repeat="record in vm.records | orderBy :'+owner'">
                 <td>{{record.id}}</td>
+                <td>{{record.owner}}</td>
+                <td>{{record.status}}</td>
                 <td>
-                    <div ng-repeat="person in record.persons">{{person.firstName}}</div>
+                    <div ng-repeat="sub in record.subrecords | orderBy :'+status'">
+                        <div class="col-sm-2">{{sub.id}}</div>
+                        <div class="col-sm-5">{{sub.owner}}</div>
+                        <div class="col-sm-5">{{sub.status}}</div>
+                    </div>
                 </td>
-                <td>
-                    <div ng-repeat="person in record.persons">{{person.lastName}}</div>
-                </td>
-</div>
-</tbody>
-</table>
+        </tbody>
+    </table>
 </div>
