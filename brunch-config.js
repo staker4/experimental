@@ -39,7 +39,6 @@ module.exports = {
         },
         copycat: {
             fonts: [
-                "node_modules/font-awesome/fonts",
                 "node_modules/bootstrap/dist/fonts"
             ]
         }

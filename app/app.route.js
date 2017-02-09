@@ -19,5 +19,5 @@ function config($urlRouterProvider, $stateProvider) {
     $stateProvider.state(homeState);
     $stateProvider.state(recordsState);
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 };
