@@ -1,5 +1,8 @@
 <div class="container-fluid text-center">
     <h2>{{vm.title}}</h2>
+    <div class="well">
+        selected : {{vm.selected.id}}
+    </div>
     <form>
         <div class="form-group">
             <div class="input-group col-md-12">
@@ -39,12 +42,16 @@
             <th>Sub Records</th>
         </thead>
         <tbody>
-            <tr ng-repeat="record in vm.filteredRecords | orderBy : vm.sortType : vm.sortReverse">
+            <tr
+            ng-repeat="record in vm.filteredRecords | orderBy : vm.sortType : vm.sortReverse"
+            ng-click="vm.selectRecord(record)"
+            ng-class="{'info' : record === vm.selected}"
+            >
                 <td>{{record.id}}</td>
                 <td>{{record.owner}}</td>
                 <td>{{record.status}}</td>
                 <td>
-                    <div ng-repeat="sub in record.subrecords | orderBy :'+status'">
+                    <div ng-repeat="sub in record.subrecords | orderBy : '+status' ">
                         <div class="col-sm-2">{{sub.id}}</div>
                         <div class="col-sm-5">{{sub.owner}}</div>
                         <div class="col-sm-5">{{sub.status}}</div>

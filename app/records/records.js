@@ -9,11 +9,13 @@ function Records($http, $location) {
     vm.records = [];
     vm.recordsCount = 0;
     vm.filteredRecords = [];
-    vm.search = search;
-
+    vm.selected = null;
     vm.recordSearch = '';
     vm.sortType = 'owner';
     vm.sortReverse = false;
+
+    vm.search = search;
+    vm.selectRecord = selectRecord;
 
     activate();
 
@@ -24,9 +26,9 @@ function Records($http, $location) {
     function getData() {
 
         return getRecords().then(function (data) {
-            vm.records = data;
-
+            vm.records = [].concat(data);
             applyFilter();
+
             return data;
         });
     }
@@ -34,6 +36,7 @@ function Records($http, $location) {
     function applyFilter() {
         vm.filteredRecords = vm.records.filter(recordFilter);
         vm.recordsCount = vm.filteredRecords.length;
+        vm.selected = vm.filteredRecords[0];
     }
 
     function recordFilter(record) {
@@ -83,6 +86,10 @@ function Records($http, $location) {
         }
 
         applyFilter();
+    }
+
+    function selectRecord(record) {
+        vm.selected = record;
     }
 
     var keyCodes = {
