@@ -16,3 +16,13 @@ footer {
 #content {
     padding: 10px 0;
 }
+
+.subrecord {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+ .subrecord:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+ }

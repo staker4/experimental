@@ -1,6 +1,6 @@
 <div class="container-fluid text-center">
-    <h2>{{vm.title}}</h2>
-    <div class="well">
+    <h1>{{vm.title}}</h1>
+    <div class="alert alert-info">
         selected : {{vm.selected.id}}
     </div>
     <form>
@@ -16,47 +16,76 @@
     <p>{{vm.recordsCount}} records found</p>
 </div>
 <div class="container-fluid">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <th>
-                <a ui-sref="records" ng-click="vm.sortType = 'id'; vm.sortReverse = !vm.sortReverse">
+    <div class="row">
+        <div class="col-sm-6">
+            <table class="table table-hover table-bordered table-condensed">
+                <thead>
+                    <th>
+                        <a ui-sref="records" ng-click="vm.sortType = 'id'; vm.sortReverse = !vm.sortReverse">
                     Id
                     <span ng-show="vm.sortType == 'id' && !vm.sortReverse" class="caret"></span>
                     <span class="dropup"><span ng-show="vm.sortType == 'id' && vm.sortReverse" class="caret"></span></span>
                 </a>
-            </th>
-            <th>
-                <a ui-sref="records" ng-click="vm.sortType = 'owner'; vm.sortReverse = !vm.sortReverse">
+                    </th>
+                    <th>
+                        <a ui-sref="records" ng-click="vm.sortType = 'owner'; vm.sortReverse = !vm.sortReverse">
                     Owner
                     <span ng-show="vm.sortType == 'owner' && !vm.sortReverse" class="caret"></span>
                     <span class="dropup"><span ng-show="vm.sortType == 'owner' && vm.sortReverse" class="caret"></span></span>
                 </a>
-            </th>
-            <th>
-                <a ui-sref="records" ng-click="vm.sortType = 'status'; vm.sortReverse = !vm.sortReverse">
+                    </th>
+                    <th>
+                        <a ui-sref="records" ng-click="vm.sortType = 'status'; vm.sortReverse = !vm.sortReverse">
                     Status
                     <span ng-show="vm.sortType == 'status' && !vm.sortReverse" class="caret"></span>
                     <span class="dropup"><span ng-show="vm.sortType == 'status' && vm.sortReverse" class="caret"></span></span>
                 </a>
-            </th>
-            <th>Sub Records</th>
-        </thead>
-        <tbody>
-            <tr
-            ng-repeat="record in vm.filteredRecords | orderBy : vm.sortType : vm.sortReverse"
-            ng-click="vm.selectRecord(record)"
-            ng-class="{'info' : record === vm.selected}"
-            >
-                <td>{{record.id}}</td>
-                <td>{{record.owner}}</td>
-                <td>{{record.status}}</td>
-                <td>
-                    <div ng-repeat="sub in record.subrecords | orderBy : '+status' ">
-                        <div class="col-sm-2">{{sub.id}}</div>
-                        <div class="col-sm-5">{{sub.owner}}</div>
-                        <div class="col-sm-5">{{sub.status}}</div>
-                    </div>
-                </td>
-        </tbody>
-    </table>
-</div>
+                    </th>
+                    <th>Sub Records</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="record in vm.filteredRecords | orderBy : vm.sortType : vm.sortReverse" ng-click="vm.selectRecord(record)"
+                        ng-class="{'info' : record === vm.selected}">
+                        <td>{{record.id}}</td>
+                        <td>{{record.owner}}</td>
+                        <td>{{record.status}}</td>
+                        <td>
+                            <div class="subrecord" ng-repeat="sub in record.subrecords | orderBy : '+status' ">
+                                <div class="row">
+                                    <div class="col-sm-2">{{sub.id}}</div>
+                                    <div class="col-sm-5">{{sub.owner}}</div>
+                                    <div class="col-sm-5">{{sub.status}}</div>
+                                </div>
+                            </div>
+                        </td>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <div ng-show="vm.selected">
+                <h2>
+                    {{vm.selected.id}} {{vm.selected.owner}} <span class="badge">{{vm.selected.status}}</span>
+                </h2>
+                <div class="table-responsive">
+                    <table class="table table-condensed" ng-repeat="subrecord in vm.selected.subrecords">
+                        <caption>{{subrecord.owner}}</caption>
+                        <thead>
+                            <th>Id</th>
+                            <th>Owner</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td>{{subrecord.id}}</td>
+                                <td>{{subrecord.owner}}</td>
+                                <td>{{subrecord.status}}</td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div ng-show="!vm.selected">
+                <h3>No record selected</h2>
+            </div>
+            <ta </div>
+        </div>
+    </div>
