@@ -17,18 +17,19 @@ function RecordsDetail($stateParams, $location, recordsResource) {
     function getRequestRecord() {
 
         var id = $stateParams.id;
-
-        vm.record = recordsResource.get({
+        return recordsResource.get({
             id: id
-        }, getRecordCompleted, getRecordFailed, );
+        },completed, failed);
 
-        function getRecordCompleted(data) {
-            console.log("record found");
-        };
+         function completed(data) {
+            console.log("Completed getting records");
+            console.log(data);
+            vm.record = data;
+        }
 
-        function getRecordFailed(error) {
-            console.log("record not found:");
+        function failed(error) {
+            console.log("Error getting records:" + error);
             $location.url('/');
-        };
+        }
     }
 }

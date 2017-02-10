@@ -4,4 +4,7 @@ angular.module('app', [
 
     'app.data',
     'app.records',
+
+    'ngMockE2E',
+    'app.mocks'
 ]);

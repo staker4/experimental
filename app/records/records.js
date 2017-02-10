@@ -2,7 +2,7 @@ angular
     .module('app.records')
     .controller('Records', Records);
 
-function Records($http, $location) {
+function Records($http, $location, $resource, recordsResource) {
 
     var vm = this;
     vm.title = "Records";
@@ -20,17 +20,23 @@ function Records($http, $location) {
     activate();
 
     function activate() {
-        getData();
+        getRecords();
     }
 
-    function getData() {
+    function getRecords() {
+        recordsResource.query(completed, failed);
 
-        return getRecords().then(function (data) {
+        var records = recordsResource.query({}, completed, failed);
+
+        function completed(data) {
+            console.log("Completed getting records");
             vm.records = [].concat(data);
             applyFilter();
+        }
 
-            return data;
-        });
+        function failed(error) {
+            console.log("Error getting records:" + error);
+        }
     }
 
     function applyFilter() {
@@ -62,19 +68,6 @@ function Records($http, $location) {
 
         return true;
     }
-
-    function getRecords() {
-        return $http.get('records.json')
-            .then(getDataComplete)
-            .catch(function (message) {
-                $location.url('/');
-            });
-
-        function getDataComplete(data, status, headers, config) {
-            return data.data;
-        }
-    }
-
 
     function textContains(text, lowerSearchText) {
         return text && -1 !== text.toLowerCase().indexOf(lowerSearchText);
