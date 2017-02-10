@@ -20,13 +20,7 @@ function config($urlRouterProvider, $stateProvider) {
         name: 'recordsDetail',
         url: '/records/:id',
         controller: 'RecordsDetail as vm',
-        templateUrl: 'recordsDetail.html',
-        resolve: {
-            record: function ( $stateParams) {
-                var id = $stateParams.id;
-                return id;
-            }
-        }
+        templateUrl: 'recordsDetail.html'
     }
 
     $stateProvider.state(homeState);
